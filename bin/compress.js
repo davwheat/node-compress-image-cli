@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 
+function trimByChar(string, character) {
+  const arr = Array.from(string);
+  const first = arr.indexOf(character);
+  const last = arr.reverse().indexOf(character);
+  return string.substring(first + 1, string.length - last - 1);
+}
+
 const meow = require("meow");
 const compress_images = require("compress-images");
 
@@ -135,7 +142,7 @@ svgopts = svgopts.split(" ");
 
 printDebug("Input: " + input, "Output: " + output);
 input += "*.{jpg,JPG,jpeg,JPEG,png,svg,gif}";
-printDebug(input, output);
+printDebug(trimByChar(input, ","), trimByChar(output, ","));
 
 new Promise((resolve, reject) => {
     return compress_images(input, output, options, false,
