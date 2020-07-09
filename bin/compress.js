@@ -141,11 +141,14 @@ gifopts = gifopts.split(" ");
 svgopts = svgopts.split(" ");
 
 printDebug("Input: " + input, "Output: " + output);
+
+input = trimByChar(input, ",");
 input += "*.{jpg,JPG,jpeg,JPEG,png,svg,gif}";
-printDebug(trimByChar(input, ","), trimByChar(output, ","));
+
+printDebug(input, trimByChar(output, ","));
 
 new Promise((resolve, reject) => {
-    return compress_images(input, output, options, false,
+    return compress_images(input, trimByChar(output, ","), options, false,
         { jpg: { engine: enginejpg, command: jpgopts } },
         { png: { engine: enginepng, command: pngopts } },
         { svg: { engine: enginesvg, command: svgopts } },
