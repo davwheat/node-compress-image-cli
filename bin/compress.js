@@ -146,6 +146,8 @@ input += "*.{jpg,JPG,jpeg,JPEG,png,svg,gif}";
 
 printDebug(input, trimByChar(output, ","));
 
+printDebug(pngopts);
+
 new Promise((resolve, reject) => {
     return compress_images(input, trimByChar(output, ","), options, false,
         { jpg: { engine: enginejpg, command: jpgopts } },
