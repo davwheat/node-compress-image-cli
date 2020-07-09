@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 function trimByChar(s, character) {
-  const arr = Array.from(s);
-  const first = arr.indexOf(character);
-  const last = arr.reverse().indexOf(character);
-  return s.substring(first + 1, s.length - last - 1);
+  const first = [...s].findIndex(char => char !== character);
+  const last = [...s].reverse().findIndex(char => char !== character);
+  return s.substring(first, s.length - last);
 }
 
 const meow = require("meow");
