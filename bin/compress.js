@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-function trimByChar(string, character) {
-  const arr = Array.from(string);
+function trimByChar(s, character) {
+  const arr = Array.from(s);
   const first = arr.indexOf(character);
   const last = arr.reverse().indexOf(character);
-  return string.substring(first + 1, string.length - last - 1);
+  return s.substring(first + 1, s.length - last - 1);
 }
 
 const meow = require("meow");
@@ -142,7 +142,7 @@ svgopts = svgopts.split(" ");
 
 printDebug("Input: " + input, "Output: " + output);
 
-input = trimByChar(input, ",");
+input = trimByChar(input.toString(), ",");
 input += "*.{jpg,JPG,jpeg,JPEG,png,svg,gif}";
 
 printDebug(input, trimByChar(output, ","));
